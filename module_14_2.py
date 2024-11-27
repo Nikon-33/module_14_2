@@ -44,7 +44,12 @@ print(f'Средний баланс всех пользователей: {avg_ba
 
 cursor.execute("SELECT COUNT(*) FROM Users")
 total_users = cursor.fetchone()[0]
-print(f'Баланс / пользователи = {all_balances / total_users}')
+
+if total_users > 0:
+    balance_per_user = all_balances / total_users
+    print(f'Баланс / пользователи = {balance_per_user}')
+else:
+    print('Нет пользователей для расчета.')
 
 connection.commit()
 connection.close()
